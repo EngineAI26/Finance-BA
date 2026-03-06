@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinAnalytica | Business Analysis Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Animated background -->
+<div class="bg-grid"></div>
+<div class="noise-overlay"></div>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="logo">
+    <span class="logo-icon">◈</span>
+    <span class="logo-text">FinAnalytica</span>
+  </div>
+  <nav class="nav">
+    <a href="#overview" class="nav-item active" data-section="overview">
+      <span class="nav-icon">▦</span> Overview
+    </a>
+    <a href="#revenue" class="nav-item" data-section="revenue">
+      <span class="nav-icon">↗</span> Revenue
+    </a>
+    <a href="#variance" class="nav-item" data-section="variance">
+      <span class="nav-icon">≈</span> Variance
+    </a>
+    <a href="#segments" class="nav-item" data-section="segments">
+      <span class="nav-icon">◎</span> Segments
+    </a>
+    <a href="#forecast" class="nav-item" data-section="forecast">
+      <span class="nav-icon">⌁</span> Forecast
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="analyst-badge">
+      <div class="analyst-dot"></div>
+      <div>
+        <div class="analyst-name">Business Analyst</div>
+        <div class="analyst-role">Finance Division · Q1 2025</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main">
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 class="page-title">Financial Performance <span class="title-accent">Dashboard</span></h1>
+      <p class="page-sub">India Operations · FY 2024–25 · Real-time Analysis</p>
+    </div>
+    <div class="topbar-right">
+      <div class="date-badge">
+        <span class="date-dot"></span>
+        <span id="live-date"></span>
+      </div>
+      <div class="currency-toggle">
+        <span class="curr-label">₹ INR</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- KPI Cards -->
+  <section class="kpi-grid" id="overview">
+    <div class="kpi-card" data-trend="up">
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-value">₹84.6 Cr</div>
+      <div class="kpi-delta up">▲ 12.4% vs LY</div>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:84%"></div></div>
+      <div class="kpi-sub">Target: ₹100 Cr</div>
+    </div>
+    <div class="kpi-card" data-trend="up">
+      <div class="kpi-label">EBITDA Margin</div>
+      <div class="kpi-value">23.7%</div>
+      <div class="kpi-delta up">▲ 2.1 pp vs LY</div>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:23.7%"></div></div>
+      <div class="kpi-sub">Industry Avg: 19.2%</div>
+    </div>
+    <div class="kpi-card" data-trend="down">
+      <div class="kpi-label">Operating Costs</div>
+      <div class="kpi-value">₹38.2 Cr</div>
+      <div class="kpi-delta down">▼ 4.3% vs Budget</div>
+      <div class="kpi-bar"><div class="kpi-fill down" style="width:62%"></div></div>
+      <div class="kpi-sub">Budget: ₹40 Cr</div>
+    </div>
+    <div class="kpi-card" data-trend="up">
+      <div class="kpi-label">Net Profit</div>
+      <div class="kpi-value">₹18.9 Cr</div>
+      <div class="kpi-delta up">▲ 8.7% vs LY</div>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:78%"></div></div>
+      <div class="kpi-sub">Target: ₹24 Cr</div>
+    </div>
+    <div class="kpi-card" data-trend="up">
+      <div class="kpi-label">ROE</div>
+      <div class="kpi-value">17.4%</div>
+      <div class="kpi-delta up">▲ 1.8 pp vs LY</div>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:69%"></div></div>
+      <div class="kpi-sub">Target: 20%</div>
+    </div>
+    <div class="kpi-card" data-trend="neutral">
+      <div class="kpi-label">Current Ratio</div>
+      <div class="kpi-value">2.14</div>
+      <div class="kpi-delta neutral">● Stable</div>
+      <div class="kpi-bar"><div class="kpi-fill neutral" style="width:71%"></div></div>
+      <div class="kpi-sub">Benchmark: 2.0+</div>
+    </div>
+  </section>
+
+  <!-- Charts Row -->
+  <section class="charts-row" id="revenue">
+    <div class="chart-card wide">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Revenue vs Budget — Monthly Trend</div>
+          <div class="chart-sub">FY 2024–25 · Actuals vs Budgeted (₹ in Lakhs)</div>
+        </div>
+        <div class="legend-row">
+          <span class="leg leg-actual">Actual</span>
+          <span class="leg leg-budget">Budget</span>
+        </div>
+      </div>
+      <canvas id="revenueChart" height="110"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Cost Breakdown</div>
+          <div class="chart-sub">Q4 FY25 · % of Total</div>
+        </div>
+      </div>
+      <canvas id="costChart" height="190"></canvas>
+      <div class="donut-center-label">
+        <span class="dcl-value">₹38.2Cr</span>
+        <span class="dcl-sub">Total OPEX</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variance Table -->
+  <section class="table-section" id="variance">
+    <div class="section-header">
+      <h2 class="section-title">Budget Variance Analysis</h2>
+      <div class="section-tag">Q4 FY 2024–25</div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Line Item</th>
+            <th>Budget (₹ Cr)</th>
+            <th>Actual (₹ Cr)</th>
+            <th>Variance (₹ Cr)</th>
+            <th>Var %</th>
+            <th>Status</th>
+            <th>Driver</th>
+          </tr>
+        </thead>
+        <tbody id="varianceTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Segment & Forecast -->
+  <section class="charts-row" id="segments">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Revenue by Segment</div>
+          <div class="chart-sub">FY25 · India Operations</div>
+        </div>
+      </div>
+      <canvas id="segmentChart" height="190"></canvas>
+    </div>
+
+    <div class="chart-card wide" id="forecast">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">12-Month Forecast — Rolling Projection</div>
+          <div class="chart-sub">FY25–26 · Best / Base / Worst Case (₹ Lakhs)</div>
+        </div>
+        <div class="legend-row">
+          <span class="leg leg-best">Best</span>
+          <span class="leg leg-base">Base</span>
+          <span class="leg leg-worst">Worst</span>
+        </div>
+      </div>
+      <canvas id="forecastChart" height="110"></canvas>
+    </div>
+  </section>
+
+  <!-- Insights Panel -->
+  <section class="insights-section">
+    <div class="section-header">
+      <h2 class="section-title">Business Analyst Insights</h2>
+      <div class="section-tag">AI-Assisted · Auto-Generated</div>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card insight-positive">
+        <div class="insight-icon">↗</div>
+        <div class="insight-body">
+          <div class="insight-title">Revenue Outperformance</div>
+          <div class="insight-text">Q3 revenue exceeded budget by ₹3.2 Cr (+7.8%) driven by strong retail banking uptake and cross-selling of insurance products in Tier-2 cities.</div>
+        </div>
+      </div>
+      <div class="insight-card insight-warning">
+        <div class="insight-icon">⚠</div>
+        <div class="insight-body">
+          <div class="insight-title">HR Cost Overrun</div>
+          <div class="insight-text">Personnel expenses surpassed budget by ₹1.4 Cr due to mid-year appraisal cycle and competitive hiring in fintech roles in Mumbai & Bengaluru.</div>
+        </div>
+      </div>
+      <div class="insight-card insight-positive">
+        <div class="insight-icon">◈</div>
+        <div class="insight-body">
+          <div class="insight-title">EBITDA Beat</div>
+          <div class="insight-text">EBITDA margin at 23.7% is 4.5 pp above industry average, attributed to digital transformation savings in operations and reduction in branch overhead.</div>
+        </div>
+      </div>
+      <div class="insight-card insight-info">
+        <div class="insight-icon">⌁</div>
+        <div class="insight-body">
+          <div class="insight-title">Forecast Upside Risk</div>
+          <div class="insight-text">Best-case scenario projects ₹102 Cr revenue for FY26 if RBI rate cuts materialise and retail credit demand sustains pace from H2 FY25.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>FinAnalytica · Business Analysis Dashboard · Built for Finance BA Portfolio · India</span>
+    <span>Data is illustrative for demonstration purposes</span>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
