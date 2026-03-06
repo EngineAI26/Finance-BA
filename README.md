@@ -65,60 +65,11 @@ finance-ba-python/
 - **Data Wrangling** — Pandas for financial data transformation
 - **Stakeholder-ready charts** — Publication-quality Matplotlib visuals
 
----
 
-## 🚀 How to Run
 
-### 1. Clone the repo
-```bash
-git clone https://github.com/YOUR_USERNAME/finance-ba-python.git
-cd finance-ba-python
-```
 
-### 2. Install dependencies
-```bash
-pip install pandas matplotlib seaborn openpyxl
-```
-
-### 3. Generate data & run analysis
-```bash
-python data_generator.py     # Creates CSV files in /data
-python finance_analysis.py   # Runs analysis, saves charts + outputs
-```
-
-All 6 charts will appear in `/charts/` and CSV reports in `/outputs/`.
 
 ---
 
-## 🚀 Deploy to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Finance BA Analysis — Python Portfolio Project"
-git remote add origin https://github.com/YOUR_USERNAME/finance-ba-python.git
-git branch -M main
-git push -u origin main
-```
-
----
-
-## 🎯 Target Job Roles (India)
-
-- Business Analyst — BFSI / FinTech
-- Financial Analyst
-- MIS & Reporting Analyst
-- Data Analyst — Banking & Finance
-- Management Consultant (Finance Practice)
-
-**Top companies:** HDFC Bank, ICICI Bank, Axis Bank, Bajaj Finserv, Paytm, PhonePe, Razorpay, Deloitte, EY, KPMG, TCS BFSI, Infosys BPM, Accenture
-
----
-
-## 📄 License
-
-MIT — Free to use for your BA portfolio.
-
----
 
 *Built to demonstrate Python-based Business Analysis skills for India's Finance & BFSI sector.*
